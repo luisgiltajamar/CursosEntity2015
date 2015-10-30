@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ejercicio.cs" />
     <Compile Include="Model\Alumno.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -63,6 +64,7 @@
     <Compile Include="Model\Curso.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\MiContexto.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +80,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Partials\Alumno.cs" />
+    <Compile Include="Model\Partials\Aula.cs" />
+    <Compile Include="Model\Partials\Curso.cs" />
+    <Compile Include="Model\Partials\Profesor.cs" />
     <Compile Include="Model\Profesor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

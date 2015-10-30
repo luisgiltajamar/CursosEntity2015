@@ -18,6 +18,7 @@ namespace CursosEntity.Model
         public cursosEntities()
             : base("name=cursosEntities")
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

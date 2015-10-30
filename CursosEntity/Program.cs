@@ -9,7 +9,7 @@ namespace CursosEntity
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Mai(string[] args)
         {
 
            
@@ -73,9 +73,16 @@ namespace CursosEntity
             using (var ctx = new cursosEntities())
             {
                 
-                var curpro = ctx.ProfesorCurso.Where(o => o.idProfesor == 1)
-                    .Select(o => o.Curso);
                 
+                var curpro = ctx.ProfesorCurso.Where(o => o.idProfesor == 1)
+                    .Select(o => o.Curso);//.ToList().AsQueryable();
+
+                curpro = curpro.Where(o => o.inicio == DateTime.Now)
+                    .OrderBy(o => o.duracion);
+
+                var rf=curpro.Where(o => o.Alumno.Select(oo => oo.dni)
+                                        .Contains("1234A")).ToArray();
+
             }
             
 
@@ -83,11 +90,27 @@ namespace CursosEntity
         public static void Subselect()
         {
 
-            using (var ctx = new cursosEntities())
+            using (var ctx = new cursosEntities(false))
             {
 
                 var curpro = ctx.Alumno.Find("12345678A").Curso.Select(o => o.ProfesorCurso.Select(oo=>oo.Profesor));
                     
+
+            }
+
+
+        }
+        public static void SinLazy()
+        {
+
+            using (var ctx = new cursosEntities())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+
+                var alu = ctx.Alumno.Include("Curso").
+                    Where(o => o.dni.Contains("A"));
+
+
 
             }
 
